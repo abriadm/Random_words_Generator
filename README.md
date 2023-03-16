@@ -1,5 +1,5 @@
 # Random Words Generator
-project flutte # 01
+project flutter # 01
 
 # Has to be changes
 yang harus diganti.

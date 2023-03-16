@@ -28,24 +28,36 @@ class MyApp extends StatelessWidget {
 
 class MyAppState extends ChangeNotifier {
   var current = WordPair.random();
-  var history = <WordPair>[]; // add variable history (new changes)
+  var history = <WordPair>[];
 
-  GlobalKey? historyListKey; // (new changes)
+  /// add variable history (new changes)
+
+  GlobalKey? historyListKey;
+
+  /// (new changes)
 
   void getNext() {
-    history.insert(0, current); // (New changes)
-    var animatedList =
-        historyListKey?.currentState as AnimatedListState?; // (new changes)
-    animatedList?.insertItem(0); // (new changes)
+    history.insert(0, current);
+
+    /// (New changes)
+    var animatedList = historyListKey?.currentState as AnimatedListState?;
+
+    /// (new changes)
+    animatedList?.insertItem(0);
+
+    /// (new changes)
     current = WordPair.random();
     notifyListeners();
   }
 
   var favorites = <WordPair>[];
-  // (new changes)
+
+  /// (new changes)
   void toggleFavorite([WordPair? pair]) {
-    pair = pair ?? current; // (new changes)
-    // (new changes)
+    pair = pair ?? current;
+
+    /// (new changes)
+    /// (new changes)
     if (favorites.contains(pair)) {
       favorites.remove(pair);
     } else {
@@ -54,7 +66,7 @@ class MyAppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  // add void function untuk delete favorite item (new changes)
+  /// add void function untuk delete favorite item (new changes)
   void removeFavorite(WordPair pair) {
     favorites.remove(pair);
     notifyListeners();
@@ -71,7 +83,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    var colorScheme = Theme.of(context).colorScheme; // (new changes)
+    var colorScheme = Theme.of(context).colorScheme;
+
+    /// (new changes)
 
     Widget page;
     switch (selectedIndex) {
@@ -85,8 +99,8 @@ class _MyHomePageState extends State<MyHomePage> {
         throw UnimplementedError('no widget for $selectedIndex');
     }
 
-    // (new changes)
-    // menambahkan text pada background, setelah klik next dan like
+    /// (new changes)
+    /// menambahkan text pada background, setelah klik next dan like
     var mainArea = ColoredBox(
       color: colorScheme.surfaceVariant,
       child: AnimatedSwitcher(
@@ -180,7 +194,9 @@ class GeneratorPage extends StatelessWidget {
           // (new changes)
           Expanded(
             flex: 3,
-            child: HistoryListView(), // call function here!!
+            child: HistoryListView(),
+
+            /// call function here!!
           ),
           SizedBox(height: 10),
           BigCard(pair: pair),
@@ -304,7 +320,7 @@ class FavoritesPage extends StatelessWidget {
   }
 }
 
-// membuat history pada statefulwidget (new changes)
+/// membuat history pada statefulwidget (new changes)
 class HistoryListView extends StatefulWidget {
   const HistoryListView({Key? key}) : super(key: key);
 
